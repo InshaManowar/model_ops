@@ -22,13 +22,14 @@
         "WandB_link": "https://wandb.ai/username/gpt-neo-fine-tuning"
     },
     "evaluation_results": {
-        "evaluation_dataset": "generated_qa_output_history.csv",
+        "evaluation_dataset": "generated_qa_output_1599_eval_results.csv",
         "metric_scores": {
-            "accuracy": 0.94,
-            "precision": 0.93,
-            "recall": 0.95
+            "bleu score": 0.92
         },
-        "other_observations": "Model performs exceptionally well on historical facts.",
+        "other_observations":" ",
         "future_plans":" "
+        
+
+
     }
 }

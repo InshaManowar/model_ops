@@ -3,19 +3,21 @@ import pandas as pd
 import os
 import json
 
-data_directory = "model_data"
+script_directory = os.path.dirname(os.path.abspath(__file__))
 
-json_files = [file for file in os.listdir(data_directory) if file.endswith('.json')]
+json_files = [file for file in os.listdir(script_directory) if file.endswith('.json')]
 
-selected_json_files = st.sidebar.multiselect("Select JSON files to display", json_files)
+model_description_to_file = {json_data["model_description"]: file_name for file_name in json_files for json_data in [json.load(open(os.path.join(script_directory, file_name), 'r'))]}
+
+selected_json_files = st.sidebar.multiselect("Select JSON files to display", model_description_to_file.keys())
 
 show_all = st.sidebar.checkbox("Show All JSON Files")
 
 combined_info = []
 evaluation_info = []
-csv_preview_files = [] 
+csv_preview_files = []
 
-selected_files = json_files if show_all else selected_json_files
+selected_files = json_files if show_all else [model_description_to_file[description] for description in selected_json_files]
 
 active_row = {"index": -1, "model_description": None}
 
@@ -30,7 +32,7 @@ for idx, file_name in enumerate(selected_files):
             active_row["model_description"] = json_data['model_description']
 
         combined_info.append({
-            "Active": is_active,  
+            "Active": is_active,
             "Model Description": json_data["model_description"],
             "Model Name": json_data["model_name"],
             "Fine-Tuned Goal": json_data["finetuned_goal"],
@@ -50,9 +52,7 @@ for idx, file_name in enumerate(selected_files):
         evaluation_info.append({
             "Model Name": json_data["model_name"],
             "Evaluation Dataset": json_data["evaluation_results"]["evaluation_dataset"],
-            "Accuracy": json_data["evaluation_results"]["metric_scores"]["accuracy"],
-            "Precision": json_data["evaluation_results"]["metric_scores"]["precision"],
-            "Recall": json_data["evaluation_results"]["metric_scores"]["recall"],
+           
             "Other Observations": json_data["evaluation_results"].get("other_observations", "N/A"),
             "Future Plan": json_data["evaluation_results"].get("future_plans", "N/A")
         })
@@ -63,12 +63,7 @@ st.title("Fine-Tuned Models Information")
 
 st.header("Training Data")
 combined_info_df = pd.DataFrame(combined_info)
-
-def highlight_active_row(s):
-    return [f"background-color: {'lightblue' if idx == active_row['index'] else ''}" for idx in range(len(s))]
-
-styled_combined_info_df = combined_info_df.style.apply(highlight_active_row, axis=1)
-st.dataframe(styled_combined_info_df)
+st.dataframe(combined_info_df)
 
 st.header("Evaluation Results")
 evaluation_info_df = pd.DataFrame(evaluation_info)

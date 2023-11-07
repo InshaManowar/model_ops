@@ -23,12 +23,11 @@
     "evaluation_results": {
         "evaluation_dataset": "generated_qa_output_1599_eval_results.csv",
         "metric_scores": {
-            "accuracy": 0.92,
-            "precision": 0.91,
-            "recall": 0.94
+            "bleu score": 0.92
         },
         "other_observations":" ",
         "future_plans":" "
+        
 
 
     }

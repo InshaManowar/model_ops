@@ -22,12 +22,14 @@
         "WandB_link": "https://wandb.ai/username/llama-2-fine-tuning"
     },
     "evaluation_results": {
-        "evaluation_dataset": "generated_qa_output_1600_eval_results.csv",
+        "evaluation_dataset": "generated_qa_output_1599_eval_results.csv",
         "metric_scores": {
-            "accuracy": 0.85,
-            "precision": 0.81,
-            "recall": 0.90
+            "bleu score": 0.92
         },
         "other_observations":" ",
-        "future_plans":" "    }
+        "future_plans":" "
+        
+
+
+    }
 }
