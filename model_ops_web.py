@@ -3,7 +3,9 @@ import pandas as pd
 import os
 import json
 
-json_files = [file for file in os.listdir() if file.endswith('.json')]
+data_directory = "model_data"
+
+json_files = [file for file in os.listdir(data_directory) if file.endswith('.json')]
 
 selected_json_files = st.sidebar.multiselect("Select JSON files to display", json_files)
 

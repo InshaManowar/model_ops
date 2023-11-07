@@ -35,7 +35,7 @@ n = len([col for col in df.columns if col.startswith('output_iteration_')])
 
 df['bleu_scores'] = df.apply(calculate_bleu_score, axis=1)
 
-# average BLEU score for each row, added to a new column 'average_bleu'
+## average BLEU score for each row, added to a new column 'average_bleu'
 df['average_bleu'] = df['bleu_scores'].apply(lambda x: sum(x) / len(x) if len(x) > 0 else 0)
 
 output_csv_file = 'output_with_bleu_scores.csv'
