@@ -1,0 +1,35 @@
+{
+    "model_name": "llama 2",
+    "model_description" : " llama 2 trained november on 4th august", 
+
+    "finetuned_goal": "question generation on psychology",
+    "date_fine_tuned": "2023-11-05",
+    "dataset_description": "A dataset of psychology flashcards",
+    "success_criteria": "Achieve a question generation accuracy of 90% or higher for psychology",
+    "model_architecture": "GPT-3.5",
+    "is_active": false,  
+    "hyperparameters": {
+        "learning_rate": 0.001,
+        "batch_size": 64,
+        "num_epochs": 3
+    },
+    "fine_tuning_details": {
+        "training_dataset": "question_generation_dataset_v1.csv",
+        "fine_tuning_script": "fine_tune.py",
+        "training_duration_hours": 24,
+        "hardware_used": "1X80GB Vast.ai cloud GPU",
+        "WandB_link": "https://wandb.ai/username/llama-2-fine-tuning"
+    },
+    "evaluation_results": {
+        "evaluation_dataset": "generated_qa_output_1599_eval_results.csv",
+        "metric_scores": {
+            "accuracy": 0.92,
+            "precision": 0.91,
+            "recall": 0.94
+        },
+        "other_observations":" ",
+        "future_plans":" "
+
+
+    }
+}

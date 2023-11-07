@@ -1,0 +1,34 @@
+{
+    "model_name": "GPT Neo",
+    "model_description" : " Neo trained november on 7th november", 
+
+    "finetuned_goal": "question generation on history",
+    "date_fine_tuned": "2023-11-10",
+    "dataset_description": "A dataset of history trivia questions",
+    "success_criteria": "Achieve a question generation accuracy of 92% or higher for history",
+    "model_architecture": "GPT-3.5",
+    "is_active": false,  
+
+    "hyperparameters": {
+        "learning_rate": 0.002,
+        "batch_size": 128,
+        "num_epochs": 5
+    },
+    "fine_tuning_details": {
+        "training_dataset": "history_questions_dataset.csv",
+        "fine_tuning_script": "fine_tune.py",
+        "training_duration_hours": 30,
+        "hardware_used": "AWS GPU instance",
+        "WandB_link": "https://wandb.ai/username/gpt-neo-fine-tuning"
+    },
+    "evaluation_results": {
+        "evaluation_dataset": "generated_qa_output_history.csv",
+        "metric_scores": {
+            "accuracy": 0.94,
+            "precision": 0.93,
+            "recall": 0.95
+        },
+        "other_observations": "Model performs exceptionally well on historical facts.",
+        "future_plans":" "
+    }
+}

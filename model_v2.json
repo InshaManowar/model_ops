@@ -1,0 +1,33 @@
+{
+    "model_name": "llama 2",
+    "model_description" : " llama 2 trained november on 9th november", 
+
+    "finetuned_goal": "question generation on sociology",
+    "date_fine_tuned": "2023-11-05",
+    "dataset_description": "A dataset of sociology flashcards",
+    "success_criteria": "Achieve a question generation accuracy of 90% or higher for sociology",
+    "model_architecture": "GPT-3.5",
+    "is_active": false,  
+
+    "hyperparameters": {
+        "learning_rate": 0.001,
+        "batch_size": 64,
+        "num_epochs": 5
+    },
+    "fine_tuning_details": {
+        "training_dataset": "question_generation_dataset_v2.csv",
+        "fine_tuning_script": "fine_tune.py",
+        "training_duration_hours": 9,
+        "hardware_used": "2X80GB Vast.ai cloud GPU",
+        "WandB_link": "https://wandb.ai/username/llama-2-fine-tuning"
+    },
+    "evaluation_results": {
+        "evaluation_dataset": "generated_qa_output_1600_eval_results.csv",
+        "metric_scores": {
+            "accuracy": 0.85,
+            "precision": 0.81,
+            "recall": 0.90
+        },
+        "other_observations":" ",
+        "future_plans":" "    }
+}
