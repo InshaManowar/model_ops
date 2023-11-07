@@ -15,22 +15,18 @@ csv_preview_files = []
 
 selected_files = json_files if show_all else selected_json_files
 
-# Variable to store the active row index and model description
 active_row = {"index": -1, "model_description": None}
 
 for idx, file_name in enumerate(selected_files):
     with open(file_name, 'r') as file:
         json_data = json.load(file)
 
-        # Create a checkbox for each row with model description
         is_active = st.checkbox(f"Toggle {json_data['model_name']} - {json_data['model_description']}", value=(idx == active_row["index"]))
 
-        # If the current row is active, update the active_row variable
         if is_active:
             active_row["index"] = idx
             active_row["model_description"] = json_data['model_description']
 
-        # Now add the rest of the data to the corresponding lists
         combined_info.append({
             "Active": is_active,  
             "Model Description": json_data["model_description"],
@@ -66,11 +62,9 @@ st.title("Fine-Tuned Models Information")
 st.header("Training Data")
 combined_info_df = pd.DataFrame(combined_info)
 
-# Define a function to highlight rows based on the active model
 def highlight_active_row(s):
     return [f"background-color: {'lightblue' if idx == active_row['index'] else ''}" for idx in range(len(s))]
 
-# Apply the function to the DataFrame
 styled_combined_info_df = combined_info_df.style.apply(highlight_active_row, axis=1)
 st.dataframe(styled_combined_info_df)
 
